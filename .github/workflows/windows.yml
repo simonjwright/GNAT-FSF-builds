@@ -200,10 +200,10 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: 'adacore/why3'
-          ref: '6645456c7c40d4bd1baada795f0afc65e3840228'
+          ref: 'fsf-13'
 
       - name: Use Setup OCaml v1 ${{ matrix.ocaml-version }}
-        uses: avsm/setup-ocaml@v1
+        uses: ocaml/setup-ocaml@v1.1.11
         with:
           ocaml-version: ${{ matrix.ocaml-version }}
 
@@ -212,9 +212,12 @@ jobs:
 
       - run: opam install camlzip dune dune-configurator menhir num ocamlgraph re seq yojson zarith
 
+      - run: sed -i 's/\r$//g' configure # fix DOS line ending
       - run: opam exec -- bash configure --prefix=C:/why3install --enable-relocation --disable-emacs-compilation --disable-hypothesis-selection --disable-js-of-ocaml --disable-zip
       - run: opam exec -- make
       - run: opam exec -- make install_spark2014
+
+      - run: git log --format="%H" -n 1 > C:/why3install/why3-version.txt
 
       - name: Upload the build artifact
         uses: actions/upload-artifact@v2
@@ -236,13 +239,15 @@ jobs:
           ref: 'master'
 
       - name: Use Setup OCaml v1 ${{ matrix.ocaml-version }}
-        uses: avsm/setup-ocaml@v1
+        uses: ocaml/setup-ocaml@v1.1.11
         with:
-          ocaml-version: ${{ env.OCAML_DEFAULT_VERSION }}
+          ocaml-version: ${{ matrix.ocaml-version }}
 
       - run: opam pin alt-ergo . -y
 
       - run: opam install alt-ergo --destdir==C:/alt-ergo-install
+
+      - run: git log --format="%H" -n 1 > C:/alt-ergo-install/alt-ergo-version.txt
 
       - name: Upload the build artifact
         uses: actions/upload-artifact@v2
