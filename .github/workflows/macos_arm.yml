@@ -13,7 +13,7 @@ jobs:
 
     - uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: 15.1
+        xcode-version: 15.2
 
     - name: Install texinfo with Homebrew
       run: brew install texinfo
