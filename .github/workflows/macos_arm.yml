@@ -11,12 +11,15 @@ jobs:
     - name: Checkout Project
       uses: actions/checkout@v2
 
-    - uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: 15.3
+    # - uses: maxim-lobanov/setup-xcode@v1
+    #   with:
+    #     xcode-version: 15.3
 
     - name: Set M4
       run: export M4=gm4
+
+    - name: Set MACOS_DEPLOYMENT_TARGET
+      run: export MACOS_DEPLOYMENT_TARGET=12
 
     - name: Install texinfo with Homebrew
       run: brew install texinfo

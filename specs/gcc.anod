@@ -142,7 +142,7 @@ class GCC(spec("gh-artifact")):
 
             # Workaround for Xcode 12.5 bug on Intel
             # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100340
-            #### args.append("--without-build-config")
+            args.append("--without-build-config")
 
             xcode = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
             clu = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
@@ -250,18 +250,6 @@ class GCC(spec("gh-artifact")):
 
         for a in self.configure_args():
             configure.add(a)
-
-        #### This converts the above configure args to my working ones
-        configure.add('--disable-libcc1')
-        configure.add('--disable-libmudflap')
-        configure.add('--disable-libsanitizer')
-        configure.add('--enable-host-pie')
-        configure.add('--without-isl')
-        configure.add('--disable-libada')
-        configure.add('--disable-libstdcxx')
-        configure.add('--disable-libstdcxx-threads')
-        configure.add('--disable-lto')
-        ####
 
         for m in ("mpfr", "gmp", "mpc", "isl"):
             if m in self.deps:
