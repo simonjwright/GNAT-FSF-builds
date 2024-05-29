@@ -18,8 +18,8 @@ jobs:
     - name: Set M4
       run: export M4=gm4
 
-    - name: Set MACOS_DEPLOYMENT_TARGET
-      run: export MACOS_DEPLOYMENT_TARGET=12
+    - name: Set MACOSX_DEPLOYMENT_TARGET
+      run: export MACOSX_DEPLOYMENT_TARGET=12
 
     - name: Install texinfo with Homebrew
       run: brew install texinfo
