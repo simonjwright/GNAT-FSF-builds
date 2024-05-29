@@ -255,6 +255,7 @@ class GCC(spec("gh-artifact")):
         configure.add('-disable-libcc1')
         configure.add('-disable-libmudflap')
         configure.add('-disable-libsanitizer')
+        configure.add('--enable-host-pie')
         configure.add('-without-isl')
         configure.add('-disable-libada')
         configure.add('-disable-libstdcxx')
