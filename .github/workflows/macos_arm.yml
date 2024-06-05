@@ -8,6 +8,9 @@ jobs:
     name: GNAT macOS
     runs-on: macos-14
     steps:
+    - name: uname -a
+      run: uname -a
+
     - name: Checkout Project
       uses: actions/checkout@v2
 
