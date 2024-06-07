@@ -8,15 +8,15 @@ from e3.anod.spec import Anod
 class base_gcc(spec("common")):
     @property
     def version(self):
-        return "13.2.0-2"
+        return "13.3.0"
 
     @property
     def tarball(self):
-        return "gnat-%s-%s.tar.gz" % (self.env.platform, self.version)
+        return "gcc-13.3.0-aarch64.tar.bz2" % (self.env.platform, self.version)
 
     @property
     def url(self):
-        return "https://github.com/alire-project/GNAT-FSF-builds/releases/download/gnat-%s/%s" \
+        return "https://github.com/simonjwright/building-gcc-macos-native/releases/download/untagged-4b0554c32e7b8b2ffb34/gcc-13.3.0-aarch64.tar.bz2" \
                     % (self.version, self.tarball)
 
     @Anod.primitive()
