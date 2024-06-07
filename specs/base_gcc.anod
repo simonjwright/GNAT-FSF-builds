@@ -12,11 +12,11 @@ class base_gcc(spec("common")):
 
     @property
     def tarball(self):
-        return "gcc-13.3.0-aarch64.tar.bz2"
+        return "gcc-13.3.0-aarch64.tar.gz"
 
     @property
     def url(self):
-        return "https://www.dropbox.com/scl/fi/dawmsqvbkslgey6j3zy2u/gcc-13.3.0-aarch64.tar.bz2?rlkey=nu7plm1xg15kpu70dunfwm8cu"
+        return "https://www.dropbox.com/scl/fi/c2k815f61sghval39uoig/gcc-13.3.0-aarch64.tar.gz?rlkey=om28cnkwk91bogyz9j0di6dgp"
 
     @Anod.primitive()
     def build(self):
