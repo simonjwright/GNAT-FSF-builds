@@ -16,7 +16,7 @@ class base_gcc(spec("common")):
 
     @property
     def url(self):
-        return "https://github.com/simonjwright/building-gcc-macos-native/releases/download/untagged-4b0554c32e7b8b2ffb34/gcc-13.3.0-aarch64.tar.bz2"
+        return "https://www.dropbox.com/scl/fi/dawmsqvbkslgey6j3zy2u/gcc-13.3.0-aarch64.tar.bz2?rlkey=nu7plm1xg15kpu70dunfwm8cu"
 
     @Anod.primitive()
     def build(self):
