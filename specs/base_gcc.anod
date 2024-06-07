@@ -16,7 +16,7 @@ class base_gcc(spec("common")):
 
     @property
     def url(self):
-        return "https://www.dropbox.com/scl/fi/c2k815f61sghval39uoig/gcc-13.3.0-aarch64.tar.gz?rlkey=om28cnkwk91bogyz9j0di6dgp"
+        return "https://www.dropbox.com/scl/fi/c2k815f61sghval39uoig/gcc-13.3.0-aarch64.tar.gz?rlkey=om28cnkwk91bogyz9j0di6dgp&dl=0"
 
     @Anod.primitive()
     def build(self):
