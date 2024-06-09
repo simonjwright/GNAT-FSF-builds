@@ -12,11 +12,11 @@ class base_gcc(spec("common")):
 
     @property
     def tarball(self):
-        return "gcc-13.3.0-aarch64.tar.gz"
+        return "gcc-13.3.0-aarch64-ld_fix.tar.gz"
 
     @property
     def url(self):
-        return "https://github.com/simonjwright/alire-index.mac/releases/download/toolchain-13.2.1/gcc-13.3.0-aarch64.tar.gz"
+        return "https://github.com/simonjwright/alire-index.mac/releases/download/toolchain-13.2.1/gcc-13.3.0-aarch64-ld_fix.tar.gz"
 
     @Anod.primitive()
     def build(self):
