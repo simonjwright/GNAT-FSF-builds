@@ -9,7 +9,13 @@ jobs:
     runs-on: macos-14
     steps:
     - name: Set Xcode 15.3
-      run: sudo xcode-select --switch /Applications/Xcode_15.3.app
+      run: |
+        sudo xcode-select --switch /Applications/Xcode_15.3.app
+        export SDKROOT=$(xcrun --show-sdk-path)
+
+    - name: set M4
+      # Xcode 15.3 doesn't provide m4, just gm4.
+      run: export M4=gm4
       
     - name: uname -a
       run: uname -a
