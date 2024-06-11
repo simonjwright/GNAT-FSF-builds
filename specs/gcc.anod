@@ -111,9 +111,6 @@ class GCC(spec("gh-artifact")):
 
     def configure_args(self):
         args = [
-            "--disable-nls",  # Disable Native Language Support (NLS)
-            "--without-libiconv-prefix",
-            "--disable-libstdcxx-pch",
             "--enable-lto",
         ]
 
@@ -134,19 +131,10 @@ class GCC(spec("gh-artifact")):
         # macOS Native
         if self.env.target.os.name == "darwin":
 
-            # Xcode 10 dropped 32-bit support
-            args.append("--disable-multilib")
-
-            args.append("--disable-libcilkrts")
-
-            # Workaround for Xcode 12.5 bug on Intel
-            # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=100340
-            # args.append("--without-build-config")
-
-            xcode = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
+           xcode = "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
             clu = "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
 
-            args.append("--with-build-sysroot=%s" % xcode)
+            args.append("--with-sysroot=%s" % Run(["xcrun", "--show-sdk-path"]))
             args.append("--with-specs=%%{!sysroot=*:--sysroot=%%:if-exists-else(%s %s)}" %
                         (xcode, clu))
 
@@ -242,9 +230,7 @@ class GCC(spec("gh-artifact")):
             configure.add("--enable-libstdcxx-threads")
             # Note that --disable-libstdcxx seems to break the builds
 
-        if "ada" in self.enable_languages and not self.env.target.os.is_bareboard:
-            configure.add("--enable-libada")
-        else:
+        if "ada" in self.enable_languages and self.env.target.os.is_bareboard:
             configure.add("--disable-libada")
 
         for a in self.configure_args():
